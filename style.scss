@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+     
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a242a;
+   
+}
+
+.container {
+    position: relative; // Se posiciona automáticamente en el punto de inicio (top-left esquina) de su elemento padre
+    width: 0px; //creación de cuadro
+    height: 0px;
+    background: #37444b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    transition: 0.5s;
+    //antes de   &::before
+    &::before {
+        content: "";
+        bottom: -15px;
+        width: 40px;
+        height: 40px;
+        background: #37444b;
+        border-radius: 5px;
+        transform: rotate (45deg);
+        transition: 0.5s;
+    }
+
+    .h2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .p{
+        
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+
+    .content {
+        min-width: 300px;
+        padding: 100px;
+        color: #fff;
+        opacity: 0;
+        transition: 0.5s;
+        transform: scale(0);
+        justify-content: center;
+        .h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             
+        }
+    }
+
+    .toggleBtn {
+        //agregar el circulo
+        position: absolute;
+        bottom: -20px;
+        min-width: 60px;
+        height: 60px;
+        background: #0bcf9c;
+        border-radius: 50%;
+        cursor: pointer; //aparezca la manita
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        //agregar el mas
+        &::before {
+            content: "+";
+            font-size: 2.5em;
+            color: #fff;
+        }
+    }
+
+    &.active /*agregado desde JavaScrip*/ .content {
+        opacity: 1; //para que se pueda mostrar
+        transition-delay: 0.5s; //pequeño retraso
+        transform: scale(1);
+    }
+
+    &.active .toggleBtn {
+        bottom: -90px; //para que se desplaze hacia abajo
+        transform: rotate(135deg); //una rotacion
+        background: #ff5a57;
+    }
+
+    &.active {
+        &::before {
+            opacity: 2;
+            transition-delay: 0.5s;
+        }
+        width: 400px;
+        height: 400px;
+        transition-delay: 0.5s;
+    }
+}
